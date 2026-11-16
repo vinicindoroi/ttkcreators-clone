@@ -1,0 +1,4 @@
+# Proxy pay.creatortkt.site → Vinicio worker (status 200 = proxy, URL stays pay.*)
+https://pay.creatortkt.site/*  https://ttkcreators.vinicio-bdf.workers.dev/:splat  200!
+
+# Pretty URLs fallback — SPA style not needed, Netlify serves /foo/ → /foo/index.html by default
