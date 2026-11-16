@@ -250,7 +250,10 @@
       var METHOD_LABELS = { paypal:'PayPal', venmo:'Venmo', cashapp:'Cash App', zelle:'Zelle', bank:'Bank Transfer (ACH)', 'apple-pay':'Apple Pay' };
       var pmethod = urlParams.get('payout_method') || 'cashapp';
       var phandle = urlParams.get('payout_handle') || '';
-      var reward  = Number(urlParams.get('reward_value') || '25');
+      var rawReward = String(urlParams.get('reward_value') || '25');
+      var rewardMatch = rawReward.match(/[0-9]+(?:\.[0-9]+)?/);
+      var reward = rewardMatch ? Number(rewardMatch[0]) : 25;
+      if (!isFinite(reward) || reward <= 0) reward = 25;
 
       var methodName = METHOD_LABELS[pmethod] || 'Cash App';
       document.getElementById('methodLine').textContent = methodName;
