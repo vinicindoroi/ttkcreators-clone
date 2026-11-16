@@ -82,9 +82,8 @@
       /* MODAL */
       .modal-backdrop { position:fixed; inset:0; background:rgba(0,0,0,.5); z-index:40; opacity:0; pointer-events:none; transition:opacity .2s; }
       .modal-backdrop.open { opacity:1; pointer-events:auto; }
-      .modal { position:fixed; left:0; right:0; bottom:0; background:#fff; border-radius:20px 20px 0 0; z-index:50; max-width:480px; margin:0 auto; transform:translateY(100%); transition:transform .25s ease-out; max-height:85vh; overflow-y:auto; }
-      .modal.open { transform:translateY(0); }
-      @media (min-width:481px) { .modal { bottom:50%; transform:translateY(50%) translateY(100vh); border-radius:20px; } .modal.open { transform:translateY(50%); } }
+      .modal { position:fixed; left:0; right:0; bottom:0; background:#fff; border-radius:20px 20px 0 0; z-index:50; max-width:480px; margin:0 auto; max-height:85vh; overflow-y:auto; visibility:hidden; opacity:0; transform:translateY(100%); transition:transform .25s ease-out, opacity .2s, visibility 0s linear .25s; }
+      .modal.open { visibility:visible; opacity:1; transform:translateY(0); transition:transform .25s ease-out, opacity .2s, visibility 0s; }
       .modal-head { display:grid; grid-template-columns:24px 1fr 24px; align-items:center; padding:16px 20px; border-bottom:1px solid var(--border); position:sticky; top:0; background:#fff; z-index:2; }
       .modal-head .title { text-align:center; font-size:17px; font-weight:700; }
       .modal-head svg { width:22px; height:22px; stroke:var(--dark); stroke-width:2.2; fill:none; stroke-linecap:round; stroke-linejoin:round; cursor:pointer; }
@@ -108,13 +107,7 @@
       .logo.bank { background:#1f3c5f; }
       .logo svg { width:28px; height:28px; }
 
-      /* Details modal */
-      .modal.sm { max-width:420px; left:50%; right:auto; transform:translate(-50%,100%); border-radius:16px; bottom:auto; top:50%; margin:0; }
-      .modal.sm.open { transform:translate(-50%,-50%); }
-      @media (max-width:480px) {
-        .modal.sm { max-width:none; left:16px; right:16px; top:50%; transform:translate(0,-40%); opacity:0; pointer-events:none; }
-        .modal.sm.open { transform:translate(0,-50%); opacity:1; pointer-events:auto; }
-      }
+      /* Details modal — bottom sheet mesmo padrão do modal1 */
       .details-input { margin-top:6px; }
       .details-input label { display:block; font-size:14px; color:var(--gray); margin-bottom:8px; }
       .details-input .method-name { font-size:14px; color:var(--gray); margin-bottom:8px; }
@@ -271,7 +264,7 @@
 
     <!-- MODAL 2: Enter payout details -->
     <div class="modal-backdrop" id="backdrop2"></div>
-    <div class="modal sm" id="modal2">
+    <div class="modal" id="modal2">
       <div class="modal-head">
         <svg viewBox="0 0 24 24" onclick="backToModal1()"><polyline points="15 18 9 12 15 6"></polyline></svg>
         <div class="title">Enter your payout details</div>
