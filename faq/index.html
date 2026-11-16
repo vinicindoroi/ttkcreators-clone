@@ -32,7 +32,7 @@
   <body>
     <div class="wrap">
       <div class="topbar">
-        <svg viewBox="0 0 24 24" onclick="history.back()"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        <svg viewBox="0 0 24 24" onclick="if(history.length>1)history.back();else location.href='/'"><polyline points="15 18 9 12 15 6"></polyline></svg>
         <div class="title">Reward Details</div>
         <span></span>
       </div>
