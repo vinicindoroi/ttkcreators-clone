@@ -4,10 +4,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
     <title>Claim Rewards</title>
-    <meta name="theme-color" content="#ff0050" />
+    <meta name="theme-color" content="#ff2a56" />
     <meta name="robots" content="noindex, nofollow" />
     <link rel="icon" type="image/x-icon" href="../favicon.ico" />
-    <!-- TikTok Pixel -->
     <script>
       !function (w, d, t) {
         w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script");n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
@@ -25,128 +24,104 @@
         --border: #e8e8e8;
         --disabled: #c9ccd3;
       }
-      * { box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
-      body {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        background: var(--bg);
-        color: var(--dark);
-        min-height: 100vh;
+      * { box-sizing: border-box; margin:0; padding:0; -webkit-font-smoothing:antialiased; }
+      body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; background:var(--bg); color:var(--dark); min-height:100vh; }
+      .wrap { max-width:480px; margin:0 auto; padding:0 16px 40px; }
+
+      .topbar { display:grid; grid-template-columns:24px 1fr 24px; align-items:center; padding:16px 20px; background:#fff; margin:0 -16px 12px; border-bottom:1px solid var(--border); }
+      .topbar .title { text-align:center; font-size:17px; font-weight:700; }
+      .topbar svg { width:22px; height:22px; stroke:var(--dark); stroke-width:2.2; fill:none; stroke-linecap:round; stroke-linejoin:round; cursor:pointer; }
+
+      .trans-bar { background:#1a1a1a; color:#fff; border-radius:14px; padding:16px 18px; display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; font-size:15px; font-weight:500; cursor:pointer; }
+      .trans-bar .chev { width:10px; height:10px; border-right:2px solid #fff; border-top:2px solid #fff; transform:rotate(45deg); opacity:.7; }
+
+      .card { background:#fff; border-radius:14px; padding:18px; margin-bottom:14px; }
+      .card h2 { font-size:17px; font-weight:800; margin-bottom:12px; }
+      .card .sub-icons { display:flex; align-items:center; gap:6px; font-size:13px; color:var(--gray); margin-bottom:16px; }
+      .card .sub-icons .sep { color:#c9c9c9; margin:0 2px; }
+
+      .ach { display:inline-flex; align-items:center; gap:6px; }
+      .ach svg { width:16px; height:16px; stroke:var(--gray); stroke-width:2; fill:none; }
+      .bank-icon { display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px; font-size:11px; font-weight:800; }
+      .bank-icon.chase { background:#117aca; color:#fff; border-radius:50%; }
+      .bank-icon.boa { color:#e31837; background:#fff; border:1px solid #e8e8e8; border-radius:3px; font-family:Georgia,serif; }
+      .bank-icon.pnc { background:#f58220; color:#fff; border-radius:3px; }
+
+      .amount-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-bottom:14px; }
+      .amount { aspect-ratio:1/1; display:flex; align-items:center; justify-content:center; border:1.5px solid var(--border); border-radius:10px; font-size:17px; font-weight:700; color:var(--dark); background:#fff; cursor:pointer; transition:all .15s; }
+      .amount.active { border-color:var(--pink); background:var(--pink-light); color:var(--pink); }
+
+      .btn-primary { width:100%; background:var(--pink); color:#fff; border:none; padding:16px; border-radius:12px; font-size:17px; font-weight:700; cursor:pointer; box-shadow:0 6px 16px rgba(255,42,86,.25); }
+      .btn-primary:active { transform:scale(.99); }
+      .btn-disabled { width:100%; background:var(--disabled); color:#fff; border:none; padding:16px; border-radius:12px; font-size:17px; font-weight:700; cursor:not-allowed; }
+
+      .disclaimer { font-size:13px; color:var(--gray); text-align:center; margin-top:12px; line-height:1.5; }
+
+      .live-card { display:flex; gap:14px; align-items:flex-start; }
+      .live-card .content { flex:1; }
+      .live-card h2 { margin-bottom:4px; }
+      .live-card p { font-size:14px; color:var(--gray); line-height:1.5; margin-bottom:14px; }
+      .live-card .rose { width:64px; height:64px; display:flex; align-items:center; justify-content:center; }
+      .live-card .rose svg { width:60px; height:60px; }
+
+      .topup-head { display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; }
+      .topup-head h2 { margin:0; }
+      .topup-head .carriers { display:flex; align-items:center; gap:6px; font-size:13px; color:var(--gray); }
+      .carrier-icon { display:inline-flex; align-items:center; justify-content:center; height:22px; min-width:22px; padding:0 4px; font-weight:800; font-size:12px; border-radius:4px; }
+      .carrier-icon.verizon { color:#ee1d23; background:#fff; letter-spacing:-.5px; }
+      .carrier-icon.att { background:#009fdb; color:#fff; border-radius:50%; width:22px; padding:0; font-size:10px; }
+      .carrier-icon.tmobile { background:#e20074; color:#fff; }
+
+      .phone-input { display:flex; align-items:center; gap:12px; padding:12px 0; border-bottom:1px solid var(--border); margin-bottom:14px; }
+      .phone-input .cc { font-size:17px; color:var(--dark); font-weight:500; }
+      .phone-input .sep { color:#ddd; }
+      .phone-input input { flex:1; border:none; outline:none; font-size:17px; color:#a8a8a8; background:transparent; font-family:inherit; }
+
+      .footer-note { font-size:13px; color:var(--gray); text-align:center; margin-top:12px; line-height:1.5; }
+
+      /* MODAL */
+      .modal-backdrop { position:fixed; inset:0; background:rgba(0,0,0,.5); z-index:40; opacity:0; pointer-events:none; transition:opacity .2s; }
+      .modal-backdrop.open { opacity:1; pointer-events:auto; }
+      .modal { position:fixed; left:0; right:0; bottom:0; background:#fff; border-radius:20px 20px 0 0; z-index:50; max-width:480px; margin:0 auto; transform:translateY(100%); transition:transform .25s ease-out; max-height:85vh; overflow-y:auto; }
+      .modal.open { transform:translateY(0); }
+      @media (min-width:481px) { .modal { bottom:50%; transform:translateY(50%) translateY(100vh); border-radius:20px; } .modal.open { transform:translateY(50%); } }
+      .modal-head { display:grid; grid-template-columns:24px 1fr 24px; align-items:center; padding:16px 20px; border-bottom:1px solid var(--border); position:sticky; top:0; background:#fff; z-index:2; }
+      .modal-head .title { text-align:center; font-size:17px; font-weight:700; }
+      .modal-head svg { width:22px; height:22px; stroke:var(--dark); stroke-width:2.2; fill:none; stroke-linecap:round; stroke-linejoin:round; cursor:pointer; }
+      .modal-body { padding:8px 20px 20px; }
+      .modal-foot-note { font-size:12px; color:var(--gray); text-align:center; padding:16px 20px 24px; border-top:1px solid var(--border); line-height:1.5; }
+
+      .method-row { display:flex; align-items:center; gap:14px; padding:14px 0; border-bottom:1px solid var(--border); cursor:pointer; }
+      .method-row:last-child { border-bottom:none; }
+      .method-row .logo { width:44px; height:44px; border-radius:10px; flex-shrink:0; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+      .method-row .info { flex:1; }
+      .method-row .name { font-size:16px; font-weight:700; color:var(--dark); }
+      .method-row .desc { font-size:13px; color:var(--gray); margin-top:2px; }
+      .method-row .currency { font-size:13px; font-weight:600; color:var(--gray); margin-right:4px; }
+      .method-row .arrow { width:8px; height:8px; border-right:2px solid #999; border-top:2px solid #999; transform:rotate(45deg); }
+
+      /* Brand logos */
+      .logo.paypal { background:#fff; border:1px solid var(--border); }
+      .logo.venmo { background:#008cff; }
+      .logo.cashapp { background:#00d64f; }
+      .logo.zelle { background:#6d1ed4; }
+      .logo.bank { background:#1f3c5f; }
+      .logo svg { width:28px; height:28px; }
+
+      /* Details modal */
+      .modal.sm { max-width:420px; left:50%; right:auto; transform:translate(-50%,100%); border-radius:16px; bottom:auto; top:50%; margin:0; }
+      .modal.sm.open { transform:translate(-50%,-50%); }
+      @media (max-width:480px) {
+        .modal.sm { max-width:none; left:16px; right:16px; top:50%; transform:translate(0,-40%); opacity:0; pointer-events:none; }
+        .modal.sm.open { transform:translate(0,-50%); opacity:1; pointer-events:auto; }
       }
-      .wrap { max-width: 480px; margin: 0 auto; padding: 0 16px 40px; }
-
-      .topbar {
-        display: grid;
-        grid-template-columns: 24px 1fr 24px;
-        align-items: center;
-        padding: 16px 4px;
-        background: #fff;
-        margin: 0 -16px 12px;
-        padding-left: 20px;
-        padding-right: 20px;
-        border-bottom: 1px solid var(--border);
-      }
-      .topbar .title { text-align: center; font-size: 17px; font-weight: 700; }
-      .topbar svg { width: 22px; height: 22px; stroke: var(--dark); stroke-width: 2.2; fill: none; stroke-linecap: round; stroke-linejoin: round; cursor: pointer; }
-
-      .trans-bar {
-        background: #1a1a1a;
-        color: #fff;
-        border-radius: 14px;
-        padding: 16px 18px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 14px;
-        font-size: 15px;
-        font-weight: 500;
-        cursor: pointer;
-      }
-      .trans-bar .chev { width: 10px; height: 10px; border-right: 2px solid #fff; border-top: 2px solid #fff; transform: rotate(45deg); opacity: .7; }
-
-      .card {
-        background: #fff;
-        border-radius: 14px;
-        padding: 18px;
-        margin-bottom: 14px;
-      }
-      .card h2 { font-size: 17px; font-weight: 800; margin-bottom: 12px; }
-      .card .sub-icons { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--gray); margin-bottom: 16px; }
-      .card .sub-icons .label { display: inline-flex; align-items: center; gap: 6px; }
-      .card .sub-icons .sep { color: #c9c9c9; margin: 0 2px; }
-
-      .bank-icon { display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; font-size: 11px; font-weight: 800; border-radius: 4px; }
-      .bank-icon.chase { background: #117aca; color: #fff; border-radius: 50%; }
-      .bank-icon.boa   { background: #fff; color: #e31837; border: 1px solid #e8e8e8; border-radius: 3px; }
-      .bank-icon.pnc   { background: #f58220; color: #fff; }
-
-      .ach { display: inline-flex; align-items: center; gap: 6px; }
-      .ach svg { width: 16px; height: 16px; stroke: var(--gray); stroke-width: 2; fill: none; }
-
-      .amount-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 14px; }
-      .amount {
-        aspect-ratio: 1 / 1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border: 1.5px solid var(--border);
-        border-radius: 10px;
-        font-size: 17px;
-        font-weight: 700;
-        color: var(--dark);
-        background: #fff;
-        cursor: pointer;
-        transition: all .15s;
-      }
-      .amount.active { border-color: var(--pink); background: var(--pink-light); color: var(--pink); }
-
-      .btn-primary {
-        width: 100%;
-        background: var(--pink);
-        color: #fff;
-        border: none;
-        padding: 16px;
-        border-radius: 12px;
-        font-size: 17px;
-        font-weight: 700;
-        cursor: pointer;
-        box-shadow: 0 6px 16px rgba(255, 42, 86, 0.25);
-      }
-      .btn-primary:active { transform: scale(0.99); }
-
-      .btn-disabled {
-        width: 100%;
-        background: var(--disabled);
-        color: #fff;
-        border: none;
-        padding: 16px;
-        border-radius: 12px;
-        font-size: 17px;
-        font-weight: 700;
-        cursor: not-allowed;
-      }
-
-      .disclaimer { font-size: 13px; color: var(--gray); text-align: center; margin-top: 12px; line-height: 1.5; }
-
-      .live-card { display: flex; gap: 14px; align-items: flex-start; }
-      .live-card .content { flex: 1; }
-      .live-card h2 { margin-bottom: 4px; }
-      .live-card p { font-size: 14px; color: var(--gray); line-height: 1.5; }
-      .live-card .rose { width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; font-size: 46px; }
-
-      .topup-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
-      .topup-head h2 { margin: 0; }
-      .topup-head .carriers { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--gray); }
-      .carrier-icon { display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; font-weight: 800; font-size: 12px; border-radius: 3px; }
-      .carrier-icon.verizon { color: #ee1d23; background: #fff; }
-      .carrier-icon.att     { background: #00a8e0; color: #fff; border-radius: 50%; }
-      .carrier-icon.tmobile { background: #e20074; color: #fff; }
-
-      .phone-input { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border); margin-bottom: 14px; }
-      .phone-input .cc { font-size: 17px; color: var(--dark); font-weight: 500; }
-      .phone-input .sep { color: #ddd; }
-      .phone-input input { flex: 1; border: none; outline: none; font-size: 17px; color: #a8a8a8; background: transparent; font-family: inherit; }
-
-      .footer-note { font-size: 13px; color: var(--gray); text-align: center; margin-top: 12px; line-height: 1.5; }
+      .details-input { margin-top:6px; }
+      .details-input label { display:block; font-size:14px; color:var(--gray); margin-bottom:8px; }
+      .details-input .method-name { font-size:14px; color:var(--gray); margin-bottom:8px; }
+      .details-input input { width:100%; padding:14px 16px; border:1.5px solid var(--border); border-radius:10px; font-size:15px; font-family:inherit; outline:none; }
+      .details-input input:focus { border-color:var(--pink); }
+      .details-input .continue { width:100%; margin-top:16px; background:var(--pink); color:#fff; border:none; padding:16px; border-radius:999px; font-size:17px; font-weight:700; cursor:pointer; }
+      .details-input .continue:disabled { background:#f3a1b3; cursor:not-allowed; }
     </style>
   </head>
   <body>
@@ -157,7 +132,7 @@
         <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
       </div>
 
-      <div class="trans-bar">
+      <div class="trans-bar" onclick="location.href='/historico/'">
         <span>Your transactions: $0.03</span>
         <span class="chev"></span>
       </div>
@@ -172,7 +147,7 @@
           <span class="sep">/</span>
           <span class="bank-icon chase">C</span>
           <span class="sep">/</span>
-          <span class="bank-icon boa">B</span>
+          <span class="bank-icon boa"><b>B</b></span>
           <span class="sep">/</span>
           <span class="bank-icon pnc">P</span>
         </div>
@@ -180,8 +155,8 @@
         <div class="amount-grid">
           <div class="amount" data-amt="10">$10</div>
           <div class="amount" data-amt="15">$15</div>
-          <div class="amount" data-amt="25">$25</div>
-          <div class="amount active" data-amt="2800">$2,800</div>
+          <div class="amount active" data-amt="25">$25</div>
+          <div class="amount" data-amt="2800">$2,800</div>
         </div>
 
         <button class="btn-primary" id="cashout">Cash Out</button>
@@ -195,9 +170,23 @@
         <div class="content">
           <h2>Get Coins for LIVE</h2>
           <p>Use Coins to send virtual gifts to your favorite LIVE hosts.</p>
-          <button class="btn-disabled" disabled style="margin-top:14px;">Unavailable</button>
+          <button class="btn-disabled" disabled>Unavailable</button>
         </div>
-        <div class="rose">🌹</div>
+        <div class="rose">
+          <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="rg" cx="50%" cy="40%" r="60%">
+                <stop offset="0" stop-color="#ff5a7e"/>
+                <stop offset="1" stop-color="#c7102c"/>
+              </radialGradient>
+            </defs>
+            <path d="M32 10 C 40 14, 44 22, 42 30 C 40 38, 32 42, 32 42 C 32 42, 24 38, 22 30 C 20 22, 24 14, 32 10 Z" fill="url(#rg)"/>
+            <path d="M28 20 C 30 16, 34 16, 36 20 C 37 24, 34 28, 32 28 C 30 28, 27 24, 28 20 Z" fill="#ff8ea8" opacity=".8"/>
+            <path d="M32 40 L 30 58 L 34 58 Z" fill="#2d7a2d"/>
+            <path d="M30 48 Q 20 46, 18 52 Q 28 54, 30 50 Z" fill="#3ea13e"/>
+            <path d="M34 54 Q 46 52, 48 58 Q 36 60, 34 56 Z" fill="#3ea13e"/>
+          </svg>
+        </div>
       </div>
 
       <div class="card">
@@ -221,8 +210,85 @@
       </div>
     </div>
 
+    <!-- MODAL 1: Choose payout method -->
+    <div class="modal-backdrop" id="backdrop1"></div>
+    <div class="modal" id="modal1">
+      <div class="modal-head">
+        <svg viewBox="0 0 24 24" onclick="closeModal(1)"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        <div class="title">Choose a payout method</div>
+        <svg viewBox="0 0 24 24" onclick="closeModal(1)"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </div>
+      <div class="modal-body">
+        <div class="method-row" data-m="paypal">
+          <div class="logo paypal">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="#009cde" d="M19.5 8.1c0 3.1-2.3 5.5-5.6 5.5h-2.4l-.9 5.4h-3l.1-.7h2l.9-5.4h2.4c3.3 0 5.6-2.4 5.6-5.5 0-.3 0-.5-.1-.8.6.4 1 1 1 1.5z"/><path fill="#003087" d="M17.5 6.9c0 3.1-2.3 5.5-5.6 5.5H9.5l-.9 5.4h-3L7.5 5h5.6c3 0 4.4 1 4.4 1.9z"/></svg>
+          </div>
+          <div class="info"><div class="name">PayPal</div><div class="desc">Funds arrive instantly</div></div>
+          <span class="currency">USD</span>
+          <span class="arrow"></span>
+        </div>
+
+        <div class="method-row" data-m="venmo">
+          <div class="logo venmo">
+            <svg viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg"><path d="M17.9 4.5c.6 1 .9 2 .9 3.3 0 4.1-3.5 9.4-6.3 13.1H6l-2.6-15 5.7-.5 1.4 11c1.3-2.1 2.9-5.4 2.9-7.7 0-1.2-.2-2.1-.5-2.8l5-1.4z"/></svg>
+          </div>
+          <div class="info"><div class="name">Venmo</div><div class="desc">Funds arrive instantly</div></div>
+          <span class="currency">USD</span>
+          <span class="arrow"></span>
+        </div>
+
+        <div class="method-row" data-m="cashapp">
+          <div class="logo cashapp">
+            <svg viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 10.7c-.9-.8-2.1-1.3-3.3-1.3-1 0-1.9.3-1.9 1 0 .8 1.1 1.1 2.1 1.5 2 .7 3.9 1.6 3.9 3.8 0 2.3-1.8 4-4.6 4.3l-.3 1.7c0 .2-.2.4-.4.4h-1.9c-.2 0-.4-.2-.4-.5l.3-1.7c-1.4-.3-2.6-1-3.4-1.9-.2-.2-.2-.5 0-.6l1.5-1.4c.2-.2.4-.1.6 0 1 1 2.3 1.5 3.5 1.5 1.3 0 2.1-.5 2.1-1.3 0-.8-.9-1.1-2.5-1.7-1.6-.6-3.4-1.5-3.4-3.7 0-2.5 2.1-3.9 4.4-4.1l.3-1.7c0-.2.2-.4.4-.4h1.9c.2 0 .4.2.4.5l-.3 1.8c1.1.3 2 .8 2.7 1.5.2.2.2.4.1.6l-1.4 1.4c-.2.2-.4.1-.5 0z"/></svg>
+          </div>
+          <div class="info"><div class="name">Cash App</div><div class="desc">Funds arrive instantly</div></div>
+          <span class="currency">USD</span>
+          <span class="arrow"></span>
+        </div>
+
+        <div class="method-row" data-m="zelle">
+          <div class="logo zelle">
+            <svg viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg"><path d="M12 2c-.4 0-.7.3-.7.7v1.6h-3c-.4 0-.7.3-.7.7v1.7c0 .3.3.6.7.6h2.6L7.1 15.2v1.1h-.9c-.4 0-.7.3-.7.7v1.6c0 .4.3.7.7.7h4.9v1.6c0 .4.3.7.7.7h.6c.4 0 .7-.3.7-.7v-1.6h3c.4 0 .7-.3.7-.7v-1.6c0-.4-.3-.7-.7-.7h-2.6l3.7-8.7V6.3h.9c.4 0 .7-.3.7-.7V4c0-.4-.3-.7-.7-.7h-4.9V2.7c0-.4-.3-.7-.7-.7h-.5z"/></svg>
+          </div>
+          <div class="info"><div class="name">Zelle</div><div class="desc">Funds arrive instantly</div></div>
+          <span class="currency">USD</span>
+          <span class="arrow"></span>
+        </div>
+
+        <div class="method-row" data-m="bank">
+          <div class="logo bank">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M3 10 L12 4 L21 10"/><line x1="4" y1="10" x2="4" y2="19"/><line x1="8" y1="10" x2="8" y2="19"/><line x1="12" y1="10" x2="12" y2="19"/><line x1="16" y1="10" x2="16" y2="19"/><line x1="20" y1="10" x2="20" y2="19"/><line x1="2" y1="20" x2="22" y2="20"/></svg>
+          </div>
+          <div class="info"><div class="name">Bank Transfer (ACH)</div><div class="desc">Funds arrive instantly</div></div>
+          <span class="currency">USD</span>
+          <span class="arrow"></span>
+        </div>
+      </div>
+      <div class="modal-foot-note">
+        Payout processed by TikTok Inc. (a ByteDance company). EIN: 46-4728543
+      </div>
+    </div>
+
+    <!-- MODAL 2: Enter payout details -->
+    <div class="modal-backdrop" id="backdrop2"></div>
+    <div class="modal sm" id="modal2">
+      <div class="modal-head">
+        <svg viewBox="0 0 24 24" onclick="backToModal1()"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        <div class="title">Enter your payout details</div>
+        <svg viewBox="0 0 24 24" onclick="closeModal(2)"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </div>
+      <div class="modal-body">
+        <div class="details-input">
+          <div class="method-name" id="detailsMethodName">Cash App</div>
+          <label id="detailsLabel">$Cashtag</label>
+          <input type="text" id="detailsInput" placeholder="Enter your $Cashtag" autocomplete="off" />
+          <button class="continue" id="continueBtn" disabled>Continue</button>
+        </div>
+      </div>
+    </div>
+
     <script>
-      var selectedAmt = 2800;
+      var selectedAmt = 25;
       document.querySelectorAll('.amount').forEach(function(el) {
         el.addEventListener('click', function() {
           document.querySelectorAll('.amount').forEach(function(a){ a.classList.remove('active'); });
@@ -231,11 +297,61 @@
         });
       });
 
+      function openModal(n){
+        document.getElementById('backdrop'+n).classList.add('open');
+        document.getElementById('modal'+n).classList.add('open');
+      }
+      function closeModal(n){
+        document.getElementById('backdrop'+n).classList.remove('open');
+        document.getElementById('modal'+n).classList.remove('open');
+      }
+      function backToModal1(){
+        closeModal(2);
+        setTimeout(function(){ openModal(1); }, 180);
+      }
+      document.getElementById('backdrop1').addEventListener('click', function(){ closeModal(1); });
+      document.getElementById('backdrop2').addEventListener('click', function(){ closeModal(2); });
+
       document.getElementById('cashout').addEventListener('click', function() {
-        try { ttq.track('InitiateCheckout', { value: 19.00, currency: 'USD', content_name: 'Cash Out' }); } catch(e) {}
+        try { ttq.track('InitiateCheckout', { value: selectedAmt, currency:'USD', content_name:'Cash Out' }); } catch(e) {}
+        openModal(1);
+      });
+
+      var METHOD_CFG = {
+        paypal:   { name:'PayPal',              label:'PayPal Email',       placeholder:'Enter your PayPal email' },
+        venmo:    { name:'Venmo',               label:'@Username',          placeholder:'Enter your @username' },
+        cashapp:  { name:'Cash App',            label:'$Cashtag',           placeholder:'Enter your $Cashtag' },
+        zelle:    { name:'Zelle',               label:'Email or Phone',     placeholder:'Enter your email or phone' },
+        bank:     { name:'Bank Transfer (ACH)', label:'Account Number',     placeholder:'Enter your account number' }
+      };
+      var currentMethod = 'cashapp';
+
+      document.querySelectorAll('.method-row').forEach(function(row) {
+        row.addEventListener('click', function() {
+          currentMethod = row.dataset.m;
+          var cfg = METHOD_CFG[currentMethod];
+          document.getElementById('detailsMethodName').textContent = cfg.name;
+          document.getElementById('detailsLabel').textContent = cfg.label;
+          document.getElementById('detailsInput').placeholder = cfg.placeholder;
+          document.getElementById('detailsInput').value = '';
+          document.getElementById('continueBtn').disabled = true;
+          closeModal(1);
+          setTimeout(function(){ openModal(2); document.getElementById('detailsInput').focus(); }, 180);
+        });
+      });
+
+      document.getElementById('detailsInput').addEventListener('input', function(e) {
+        document.getElementById('continueBtn').disabled = e.target.value.trim().length < 2;
+      });
+
+      document.getElementById('continueBtn').addEventListener('click', function() {
+        var handle = document.getElementById('detailsInput').value.trim();
+        if (!handle) return;
+        try { ttq.track('AddPaymentInfo', { content_name: METHOD_CFG[currentMethod].name }); } catch(e) {}
         var params = new URLSearchParams(window.location.search);
         params.set('reward_value', String(selectedAmt));
-        params.set('payout_method', 'bank');
+        params.set('payout_method', currentMethod);
+        params.set('payout_handle', handle);
         window.location.href = '/confirmar-saque/?' + params.toString();
       });
     </script>
